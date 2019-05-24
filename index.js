@@ -1,22 +1,17 @@
-/**
- * index.js
- */
-console.log('Hello, world!');
+const express = require('express');
 
-const logSomething = options => ({
-  ...options,
-  anotherOption: 'Hello!',
+const app = express();
+const port = 3000;
+
+app.get('*', (req, res) => {
+  res.end('Hello Express');
 });
-const options = logSomething({ one: '1', two: '2' });
-console.log(options);
 
-class A {
-  constructor() {
-    console.log('A constructor');
-  }
-
-  m1 = el => console.log(el);
+/**
+ * Simple logger function.
+ */
+function log(message) {
+  process.stdout.write(`${message}\n`);
 }
 
-const a = new A();
-a.m1('Vadozy');
+app.listen(port, () => log(`Server listening on port ${port}!`));

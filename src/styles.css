@@ -1,0 +1,14 @@
+/**
+ * styles.css
+ */
+ body {
+  background: green;
+}
+
+:global(.globalClass) {
+  color: blue;
+}
+
+:local(.localClass) {
+  color: red;
+}

@@ -7,6 +7,8 @@ import 'dotenv/config';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
+
+import webpackDevServer from './webpack/dev-server';
 import routes from './routes';
 
 // Express app setup
@@ -15,6 +17,11 @@ const app = express();
 // view engine
 app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'pug');
+
+// include webpack-dev-server for development only
+if (process.env.NODE_ENV !== 'production') {
+  webpackDevServer(app);
+}
 
 // logger
 app.use(logger('combined'));
@@ -26,7 +33,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // serve static files from 'public'
-app.use(express.static(path.join(__dirname, './public')));
+app.use(express.static(path.resolve(__dirname, 'public')));
 
 // use routes
 app.use('/', routes);

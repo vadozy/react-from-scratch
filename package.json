@@ -42,7 +42,7 @@
     "pre-commit": "^1.2.2",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
-    "svg-inline-loader": "^0.8.0",
+    "svg-inline-loader": "^0.8.2",
     "webpack-cli": "^3.3.2"
   },
   "dependencies": {
